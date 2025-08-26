@@ -6,13 +6,13 @@ export default function Footer() {
     <footer className="bg-cyan-700 text-white py-10 mt-10">
       <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
         
-        {/* Logo e Marca */}
+        {   }
         <div className="flex flex-col items-center mb-6">
           <h2 className="text-2xl font-bold mt-2">ELETRONS</h2>
           <p className="text-sm">ONLINE ELECTRONICS</p>
         </div>
 
-        {/* Redes sociais */}
+        {   }
         <div className="mb-6 text-center">
           <p className="font-semibold mb-2">Redes sociais:</p>
           <div className="flex space-x-6">
@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Direitos autorais */}
+        {   }
         <p className="text-xs text-center">
           © Eletrons. Todos os direitos reservados.
         </p>

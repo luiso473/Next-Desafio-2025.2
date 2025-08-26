@@ -6,10 +6,10 @@ export default function Navbar() {
     <nav className="w-full bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         
-        {/* Logo */}
+        {   }
         <div className="text-2xl font-bold">ELETRONS</div>
 
-        {/* Links */}
+        {   }
         <ul className="hidden md:flex space-x-8 text-gray-700 font-medium">
           <li><a href="/" className="hover:text-blue-600">HOME</a></li>
           <li><a href="/produtos" className="hover:text-blue-600">PRODUTOS</a></li>
