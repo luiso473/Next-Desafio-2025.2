@@ -3,36 +3,41 @@
 import { useState } from "react";
 import { Search } from "lucide-react";
 
-export default function ProductsPage() {
-  const [produtos] = useState(
-    Array.from({ length: 12 }, (_, i) => ({
-      id: i + 1,
-      nome: "Notebook",
-      preco: 3500,
-      img_url: "/images/notebook.jpg",
-    }))
+export default function ProductsPage({
+  produtos,
+}: {
+  produtos: {
+    id: number;
+    nome: string;
+    preco: number;
+    img_url: string;
+  }[];
+}) {
+  const [search, setSearch] = useState("");
+
+  const produtosFiltrados = produtos.filter((p) =>
+    p.nome.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <section className="px-6 py-12">
-      {/* Título */}
       <h2 className="text-3xl font-bold text-center mb-8">Produtos</h2>
 
-      {/* Barra de pesquisa */}
       <div className="flex justify-center mb-8">
         <div className="relative w-full max-w-md">
           <Search className="absolute left-3 top-2.5 text-gray-400" size={20} />
           <input
             type="text"
             placeholder="Pesquisar"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
           />
         </div>
       </div>
 
-      {/* Grid de produtos */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {produtos.map((produto) => (
+        {produtosFiltrados.map((produto) => (
           <div
             key={produto.id}
             className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"

@@ -1,12 +1,17 @@
-import  prisma  from "@/src/lib/db";
+import prisma from "@/src/lib/db";
 import ProductsPage from "@/src/components/ProductsPage";
 
 export default async function Produtos() {
-  // Busca os produtos do banco
-  const produtos = await prisma.product.findMany({
+  const produtosDB = await prisma.product.findMany({
     orderBy: { createdAt: "desc" },
   });
 
-  // Passa os produtos para o componente client
+  const produtos = produtosDB.map((p) => ({
+    id: p.id,
+    nome: p.title,
+    preco: p.price,
+    img_url: "/images/notebook.jpg", 
+  }));
+
   return <ProductsPage produtos={produtos} />;
 }
