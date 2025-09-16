@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 
 export default function ProductsPage() {
-  // Mock temporário → substitua pelos dados do banco depois
   const [produtos] = useState(
     Array.from({ length: 12 }, (_, i) => ({
       id: i + 1,
