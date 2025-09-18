@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
+import Link from "next/link";
 
 export default function ProductsPage({
   produtos,
+  totalPages,
+  currentPage,
 }: {
   produtos: {
     id: number;
@@ -12,6 +15,9 @@ export default function ProductsPage({
     preco: number;
     img_url: string;
   }[];
+  totalPages: number;
+  currentPage: number;
+
 }) {
   const [search, setSearch] = useState("");
 
@@ -57,15 +63,19 @@ export default function ProductsPage({
 
       {/* Paginação */}
       <div className="flex justify-center mt-12 space-x-2">
-        {[1, 2, 3, 4, 5].map((num) => (
-          <button
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map((num) => (
+          <Link
             key={num}
-            className="px-3 py-1 border rounded-lg hover:bg-blue-500 hover:text-white transition"
+            href={`/products?page=${num}`}
+            className={`px-3 py-1 border rounded-lg transition ${
+              currentPage === num
+                ? "bg-blue-500 text-white"
+                : "hover:bg-blue-500 hover:text-white"
+            }`}
           >
             {num}
-          </button>
+          </Link>
         ))}
-      </div>
-    </section>
+      </div>    </section>
   );
 }
