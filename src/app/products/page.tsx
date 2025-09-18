@@ -4,6 +4,7 @@ import ProductsPage from "@/src/components/ProductsPage";
 export default async function Produtos() {
   const produtosDB = await prisma.product.findMany({
     orderBy: { createdAt: "desc" },
+    take: 12,
   });
 
   const produtos = produtosDB.map((p) => ({

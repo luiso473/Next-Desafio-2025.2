@@ -49,7 +49,7 @@ export default function ProductsPage({
             />
             <div className="p-4 text-center">
               <h3 className="text-lg font-semibold">{produto.nome}</h3>
-              <p className="text-gray-600 mt-2">R$ {produto.preco},00</p>
+              <p className="text-gray-600 mt-2">R$ {produto.preco}</p>
             </div>
           </div>
         ))}
