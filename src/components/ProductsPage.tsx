@@ -20,7 +20,7 @@ export default function ProductsPage({
   );
 
   return (
-    <section className="px-6 py-12">
+    <section className="px-6 py-12 ">
       <h2 className="text-3xl font-bold text-center mb-8">Produtos</h2>
 
       <div className="flex justify-center mb-8">

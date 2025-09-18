@@ -5,7 +5,7 @@ import HomePage from "@/src/components/HomePage";
 export default async function Home() {
   const produtosDB = await prisma.product.findMany({
     orderBy: { createdAt: "desc" },
-    take: 8, // os 8 mais recentes
+    take: 9, 
   });
 
   const produtos = produtosDB.map((p) => ({
@@ -15,6 +15,5 @@ export default async function Home() {
     img_url: "/images/notebook.jpg", 
   }));
 
-  // aqui você passa os produtos para o seu HomePage
   return <HomePage produtos={produtos} />;
 }

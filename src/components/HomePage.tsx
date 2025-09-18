@@ -9,7 +9,16 @@ import "swiper/css/pagination";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function HeroSection() {
+export default function HomePage({
+  produtos,
+}: {
+  produtos: {
+    id: number;
+    nome: string;
+    preco: number;
+    img_url: string;
+  }[];
+}) {
   return (
     <>
       {/* Hero Section */}
@@ -88,37 +97,21 @@ export default function HeroSection() {
       
         {/* Grid de produtos */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-          {[
-            {
-              title: "Notebook",
-              desc: "Melhor que essa geladeira que você chama de pc!!!.",
-              img: "/images/destaque1.jpg",
-            },
-            {
-              title: "Celular",
-              desc: "FIphoen 25 PRO MAX ULTRAWIDE DE CABEÇA PARA BAIXO SÓ HOJE.",
-              img: "/images/destaque2.jpg",
-            },
-            {
-              title: "Drone",
-              desc: "Drone com preço bão.",
-              img: "/images/destaque3.jpg",
-            },
-          ].map((item, index) => (
+          {produtos.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow"
             >
               <Image
-                src={item.img}
-                alt={item.title}
+                src={item.img_url}
+                alt={item.nome}
                 width={500}
                 height={300}
                 className="object-cover w-full h-48"
               />
               <div className="p-4">
-                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
+                <h3 className="text-xl font-semibold mb-2">{item.nome}</h3>
+                <p className="text-gray-600">R$ {item.preco}</p>
               </div>
             </div>
           ))}
