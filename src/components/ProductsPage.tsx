@@ -44,8 +44,9 @@ export default function ProductsPage({
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {produtosFiltrados.map((produto) => (
-          <div
+          <Link
             key={produto.id}
+            href={`/products/${produto.id}`}
             className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition"
           >
             <img
@@ -57,7 +58,7 @@ export default function ProductsPage({
               <h3 className="text-lg font-semibold">{produto.nome}</h3>
               <p className="text-gray-600 mt-2">R$ {produto.preco}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
