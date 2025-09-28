@@ -1,4 +1,6 @@
+//import { Link } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AdminLogin() {
   return (
@@ -37,7 +39,9 @@ export default function AdminLogin() {
               type="button"
               className="self-end bg-yellow-400 text-black font-medium px-6 py-2 rounded-lg hover:bg-yellow-500 transition"
             >
+              <Link href="/admin/dashboard">
               Login
+              </Link>
             </button>
           </form>
         </div>

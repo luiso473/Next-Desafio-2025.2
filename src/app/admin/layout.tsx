@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import AdminSidebar from "@/src/components/AdminSidebar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,17 +22,19 @@ export const metadata: Metadata = {
 
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-          {children}
-        <Footer />
+      <body className="m-0 p-0">
+        {/* usamos h-screen para altura da viewport */}
+        <div className="flex h-screen">
+          {/* Sidebar fixa ocupando altura total */}
+          <AdminSidebar />
+          {/* Conteúdo scrollável */}
+          <div className="flex-1 overflow-y-auto bg-white">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
