@@ -63,12 +63,12 @@ export default function ProductDetails({ product, produtosFiltrados }: { product
       </div>
 
       {/* Carrossel */}
-<div className="w-full mt-8 relative">
+<div className="w-full mt-8 relative overflow-visible">
   <Swiper
     modules={[Navigation, Pagination, Autoplay]}
     navigation
     pagination={{ clickable: true }}
-    autoplay={{ delay: 3000 }}
+    //autoplay={{ delay: 3000 }}
     loop
     spaceBetween={20}
     slidesPerView={1}
@@ -83,7 +83,7 @@ export default function ProductDetails({ product, produtosFiltrados }: { product
       <SwiperSlide key={product.id}>
         <Link
           href={`/products/${product.id}`}
-          className="block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1 duration-300"
+          className="block bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition transform hover:-translate-y-1 duration-300 h-[340px]"
         >
           <div className="w-full h-48 relative">
             <img
@@ -117,6 +117,14 @@ export default function ProductDetails({ product, produtosFiltrados }: { product
       transform: translateY(-50%);
       width: 2.5rem;
       height: 2.5rem;
+    }
+
+    .swiper-button-prev {
+      left: -2.5rem; /* joga para fora do carrossel */
+    }
+
+    .swiper-button-next {
+      right: -2.5rem; /* joga para fora do carrossel */
     }
 
     .swiper-pagination {
