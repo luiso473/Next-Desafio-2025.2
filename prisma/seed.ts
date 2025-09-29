@@ -1,8 +1,12 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
 
 async function main() {
+  
+  const hashedPassword = await bcrypt.hash('senha123', 10);
+
   const products = [
     {
       title: 'Wireless Mouse',
@@ -71,6 +75,16 @@ async function main() {
       data: product,
     });
   }
+
+    await prisma.user.create({
+    data: {
+      name: 'Admin',
+      email: 'admin@admin.com',
+      password: hashedPassword,
+      role: 'admin',
+    },
+  });
+
 }
 
 main()
