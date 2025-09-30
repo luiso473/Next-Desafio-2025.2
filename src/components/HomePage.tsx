@@ -24,7 +24,7 @@ export default function HomePage({
     <>
       {/* Hero Section */}
       <section className="bg-blue-400 py-12">
-        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6">
+        <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 ">
           {/* Texto */}
           <div className="max-w-lg text-white space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">
@@ -42,32 +42,32 @@ export default function HomePage({
           </div>
 
           {/* Carrossel */}
-          <div className="w-full md:w-1/2 mt-8 md:mt-0">
+          <div className="md:w-1/2 mt-8 md:mt-0 aspect-[16/9] w-full relative">
             <Swiper
               modules={[Navigation, Pagination, Autoplay]}
               navigation
               pagination={{ clickable: true }}
               autoplay={{ delay: 3000 }}
               loop
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-[500px] h-[300px] object-cover mx-auto"
             >
               <SwiperSlide>
                 <img
-                  src="/images/banner1.jpg"
+                  src="/pictures/OIP.jpg"
                   alt="Promoção 1"
-                  className="w-full rounded-lg"
+                  className="object-cover rounded-lg w-full h-full"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  src="/images/banner2.jpg"
+                  src="/pictures/OIP.jpg"
                   alt="Promoção 2"
                   className="w-full rounded-lg"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  src="/images/banner3.jpg"
+                  src="/pictures/OIP.jpg"
                   alt="Promoção 3"
                   className="w-full rounded-lg"
                 />

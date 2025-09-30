@@ -14,7 +14,6 @@ export default function Navbar() {
           <li><a href="/" className="hover:text-blue-600">HOME</a></li>
           <li><a href="/products" className="hover:text-blue-600">PRODUTOS</a></li>
           <li><a href="/contato" className="hover:text-blue-600">CONTATO</a></li>
-          <li><a href="/gerenciamento" className="hover:text-blue-600">GERENCIAMENTO</a></li>
           <li><a href="/admin/login" className="hover:text-blue-600">LOGIN</a></li>
         </ul>
 
