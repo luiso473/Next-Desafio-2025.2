@@ -2,6 +2,9 @@ import Image from "next/image";
 import { Eye, Trash2, Pencil } from "lucide-react";
 import Link from "next/link";
 import ProductModalTrigger from "./ProductAddModal";
+import { ProductViewModal } from "./ProductViewModal";
+import { ProductEditModal } from "./ProductEditModal";
+import { ProductDeleteModal } from "./ProductDeleteModal";
 
 
 interface Product {
@@ -10,6 +13,7 @@ interface Product {
   price: number;
   description: string;
   imageUrl?: string; 
+  createdAt: Date;
 }
 
 
@@ -61,9 +65,9 @@ export default function AdminProducts({
                 />
               </td>
               <td className="border px-4 py-2 flex gap-2">
-                <Eye className="w-5 h-5 cursor-pointer" />
-                <Trash2 className="w-5 h-5 cursor-pointer text-red-500" />
-                <Pencil className="w-5 h-5 cursor-pointer text-blue-500" />
+  <ProductViewModal product={p} />
+  <ProductEditModal product={p} />
+  <ProductDeleteModal productId={p.id} />
               </td>
             </tr>
           ))}

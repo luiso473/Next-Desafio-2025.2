@@ -28,5 +28,6 @@ model Product {
   description String
   price       Float
   createdAt   DateTime @default(now())
+  imageUrl    String?
 }
 
