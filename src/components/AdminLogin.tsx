@@ -26,7 +26,6 @@ export default function AdminLogin() {
         return;
       }
 
-      // se tudo ok, redireciona
       router.push("/admin/dashboard");
     } catch (err) {
       setError("Erro no login");

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="m-0 p-0">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* usamos h-screen para altura da viewport */}
         <div className="flex h-screen">
           {/* Sidebar fixa ocupando altura total */}
