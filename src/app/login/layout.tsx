@@ -22,15 +22,10 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* usamos h-screen para altura da viewport */}
         <div className="flex h-screen">
           <div className="flex-1 overflow-y-auto bg-white">
             {children}
           </div>
         </div>
-      </body>
-    </html>
   );
 }
