@@ -7,9 +7,11 @@ import { Label } from "@radix-ui/react-label";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
+import { useRouter } from "next/navigation";
 
 export function ProductEditModal({ product }: { product: Product }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   async function handleEdit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,6 +29,7 @@ export function ProductEditModal({ product }: { product: Product }) {
     });
 
     setOpen(false);
+    router.refresh();
   }
 
   return (

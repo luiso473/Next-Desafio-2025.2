@@ -4,13 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
+import { useRouter } from "next/navigation";    
 
 export function ProductDeleteModal({ productId }: { productId: number }) {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
 
   async function handleDelete() {
     await fetch(`/api/products/${productId}`, { method: "DELETE" });
     setOpen(false);
+    router.refresh();
   }
 
   return (

@@ -5,17 +5,13 @@ import ProductModalTrigger from "./ProductAddModal";
 import { ProductViewModal } from "./ProductViewModal";
 import { ProductEditModal } from "./ProductEditModal";
 import { ProductDeleteModal } from "./ProductDeleteModal";
+import { Product } from "@prisma/client";
 
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  imageUrl?: string; 
-  createdAt: Date;
+interface AdminProductsProps {
+  products: Product[];
+  currentPage: number;
+  totalPages: number;
 }
-
 
 export default function AdminProducts({
   products,

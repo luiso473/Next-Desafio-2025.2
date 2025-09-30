@@ -5,9 +5,30 @@ import Modal from "./Modal";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 
 export default function ProductModalTrigger() {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+  
+  async function handleAdd(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      title: formData.get("title"),
+      price: Number(formData.get("price")),
+      description: formData.get("description"),
+    };
+
+    await fetch("/api/products", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    setOpen(false);
+    router.refresh(); // 🔄 atualiza lista de produtos
+  }
 
   return (
     <>
@@ -28,14 +49,14 @@ export default function ProductModalTrigger() {
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancelar
             </Button>
-            <Button>Salvar</Button>
+            <Button type="submit" form="add-product-form">Salvar</Button>
           </>
         }
       >
-        <div className="space-y-4">
+        <form id="add-product-form" onSubmit={handleAdd} className="space-y-4">
           <div>
-            <Label htmlFor="name">Nome</Label>
-            <Input id="name" placeholder="Notebook Dell XPS" />
+            <Label htmlFor="title">Nome</Label>
+            <Input id="title" placeholder="Notebook Dell XPS" />
           </div>
           <div>
             <Label htmlFor="price">Preço</Label>
@@ -45,7 +66,7 @@ export default function ProductModalTrigger() {
             <Label htmlFor="description">Descrição</Label>
             <Input id="description" placeholder="Escreva uma breve descrição..." />
           </div>
-        </div>
+        </form>
       </Modal>
     </>
   );

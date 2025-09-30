@@ -3,16 +3,11 @@
 import { Eye } from "lucide-react";
 import { useState } from "react";
 import Modal from "./Modal";
+import { Product } from "@prisma/client";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  createdAt: Date;
-  imageUrl?: string;
+interface ProductViewModalProps {
+  product: Product;
 }
-
 
 export function ProductViewModal({ product }: { product: Product }) {
   const [open, setOpen] = useState(false);
