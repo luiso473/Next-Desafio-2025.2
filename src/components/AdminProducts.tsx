@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Eye, Trash2, Pencil } from "lucide-react";
 import Link from "next/link";
+import ProductModalTrigger from "./ProductAddModal";
+
 
 interface Product {
   id: number;
@@ -25,9 +27,7 @@ export default function AdminProducts({
       {/* Cabeçalho */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">GERENCIAMENTO DE PRODUTOS</h1>
-        <button className="bg-yellow-400 px-4 py-2 rounded-full shadow hover:bg-yellow-500">
-          Novo produto
-        </button>
+        <ProductModalTrigger/>
       </div>
 
       {/* Tabela */}
