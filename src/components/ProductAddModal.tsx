@@ -27,7 +27,7 @@ export default function ProductModalTrigger() {
     });
 
     setOpen(false);
-    router.refresh(); // 🔄 atualiza lista de produtos
+    router.refresh(); 
   }
 
   return (

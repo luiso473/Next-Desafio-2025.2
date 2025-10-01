@@ -37,13 +37,13 @@ export default function AdminSidebar() {
             </div>
 
             <nav className="flex flex-col gap-4">
-              <a href="/admin" className="hover:underline">
+              <a href="/" className="hover:underline">
                 Home
               </a>
-              <a href="/admin/products" className="hover:underline">
+              <a href="/admin/dashboard" className="hover:underline">
                 Gerenciamento de produtos
               </a>
-              <a href="/logout" className="hover:underline">
+              <a href="/" className="hover:underline">
                 Logout
               </a>
             </nav>

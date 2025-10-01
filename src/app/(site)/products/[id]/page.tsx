@@ -6,6 +6,7 @@ interface ProductsPageProps {
     id: string;
   };
 }
+
 export default async function ProductsPage({ params }: ProductsPageProps) {
   const productDB = await prisma.product.findUnique({
     where: { id: Number(params.id) },
@@ -17,14 +18,15 @@ export default async function ProductsPage({ params }: ProductsPageProps) {
 
   const product = {
     id: productDB.id,
-    name: productDB.title,              
+    name: productDB.title,
     description: productDB.description,
     price: productDB.price,
-    imageUrl: "/images/notebook.jpg",   
+    imageUrl: productDB.imageUrl ?? "/images/notebook.jpg",
     createdAt: productDB.createdAt,
   };
+
   const related = await prisma.product.findMany({
-    where: { NOT: { id: productDB.id } }, // ou outra condição
+    where: { NOT: { id: productDB.id } },
     take: 5,
   });
 
@@ -32,7 +34,7 @@ export default async function ProductsPage({ params }: ProductsPageProps) {
     id: p.id,
     nome: p.title,
     preco: p.price,
-    img_url: "/images/notebook.jpg",
+    img_url: p.imageUrl ?? "/pictures/OIP.jpg",
   }));
 
   return (

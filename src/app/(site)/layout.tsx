@@ -23,14 +23,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-
+}) {
   return (
     <>
-        <Navbar />
-          {children}
+      <Navbar />
+      <main className="max-w-7xl mx-auto px-6 py-8">
+        {children}
+      </main>
     </>
   );
 }

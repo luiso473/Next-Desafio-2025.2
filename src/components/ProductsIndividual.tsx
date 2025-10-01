@@ -7,6 +7,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useCart } from "@/src/context/CartContext"; 
 
 interface Product {
   id: number;
@@ -23,11 +24,17 @@ interface ProdutoFiltrado {
   img_url: string;
 }
 
+export default function ProductDetails({
+  product,
+  produtosFiltrados,
+}: {
+  product: Product;
+  produtosFiltrados: ProdutoFiltrado[];
+}) {
+  const { addToCart } = useCart(); 
 
-export default function ProductDetails({ product, produtosFiltrados }: { product: Product; produtosFiltrados: ProdutoFiltrado[]; }) {
   return (
     <div className="max-w-5xl mx-auto p-6">
-      {/* Grid principal */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Imagem */}
         <div className="flex items-center justify-center">
@@ -50,9 +57,19 @@ export default function ProductDetails({ product, produtosFiltrados }: { product
             </p>
           </div>
 
-          {/* Botões lado a lado */}
           <div className="flex gap-4 justify-end">
-            <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-4 py-2 rounded">
+            <button
+              onClick={() =>
+                addToCart({
+                  id: product.id,
+                  title: product.name,
+                  price: product.price,
+                  imageUrl: product.imageUrl,
+                  quantity: 1,
+                })
+              }
+              className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-4 py-2 rounded"
+            >
               Adicionar ao carrinho
             </button>
             <button className="bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded">
@@ -61,14 +78,13 @@ export default function ProductDetails({ product, produtosFiltrados }: { product
           </div>
         </div>
       </div>
-
       {/* Carrossel */}
 <div className="w-full mt-8 relative overflow-visible">
   <Swiper
     modules={[Navigation, Pagination, Autoplay]}
     navigation
     pagination={{ clickable: true }}
-    //autoplay={{ delay: 3000 }}
+    autoplay={{ delay: 7000 }}
     loop
     spaceBetween={20}
     slidesPerView={1}
@@ -108,7 +124,6 @@ export default function ProductDetails({ product, produtosFiltrados }: { product
     ))}
   </Swiper>
 
-  {/* Ajustes para setas sem ocupar espaço */}
   <style jsx>{`
     .swiper-button-prev,
     .swiper-button-next {
